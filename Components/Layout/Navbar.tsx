@@ -63,9 +63,7 @@ const Navbar: React.FC = () => {
       <button className="flex flex-row justify-center items-center w-max h-14 text-white border border-white border-solid p-4 rounded-[20px] lg:hidden">
         Add Property <ArrowOutwardIcon />
       </button>
-     
         <Drawer />
-     
     </div>
   );
 };

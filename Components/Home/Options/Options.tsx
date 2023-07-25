@@ -10,8 +10,9 @@ const Options:React.FC=()=> {
     <div className='flex flex-row justify-evenly max-w-[900px] m-auto'>
 <OptionTile />
 {
-    [1,2,3,4].map(item=>{
-        return <OptionTab />
+    [1,2,3,4].map((item,index)=>{
+        return  <OptionTab />
+         
     })
 }
        

@@ -3,7 +3,7 @@ import Search from "./Search";
 import DatePicker from "./DatePicker";
 import OptionTile from "../Options/OptionTile";
 import Options from "../Options/Options";
-import Carousel from './Carousel'
+import Carousel from "./Carousel";
 const TopBannerImage: React.FC = () => {
   return (
     <div className="relative mb-20 ">
@@ -25,7 +25,7 @@ const TopBannerImage: React.FC = () => {
         </div>
         <div className="absolute top-[85%] w-full flex md:hidden">
           <div className="w-full">
-           <Carousel />
+            <Carousel />
           </div>
         </div>
       </div>
