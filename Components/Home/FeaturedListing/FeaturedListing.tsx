@@ -5,6 +5,8 @@ import AddTab from "./AddTab";
 const FeaturedListing: React.FC = () => {
   const carouselItems: React.FC<{}>[] = [AddTab, AddTab, AddTab];
 
+   
+    
   return (
     <div className="flex flex-col overflow-hidden ">
       <div className="flex flex-row justify-between items-center max-w-[1000px] m-auto w-full">

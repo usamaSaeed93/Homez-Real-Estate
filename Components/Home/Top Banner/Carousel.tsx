@@ -6,7 +6,11 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import OptionTile from '../Options/OptionTile';
 
 const DivCarousel = () => {
-  // Replace this data with your own content or fetch it from an API
+  
+    if (typeof window !== "undefined") {
+      (window as any).$ = (window as any).jQuery = require("jquery");
+    }
+    
   const divs = [
     <div className="item"><OptionTile /></div>,
     <div className="item"><OptionTile /></div>,
@@ -22,7 +26,7 @@ const DivCarousel = () => {
     margin: 10,
     nav: true,
     responsive: {
-      0: { items: 1 },
+      0: { items: 2 },
       768: { items: 4 },
       1024: { items: 6 },
     },

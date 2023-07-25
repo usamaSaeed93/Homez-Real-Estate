@@ -8,7 +8,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        banner:"url('/Images/png/banner.png')"
+        banner:"url('/Images/png/banner.png')",
+        profile1:"url('/Images/png/image1.jpg')",
+        profile2:"url('/Images/png/image2.jpg')"
       },
       fontFamily:{
       Inter: [ 'Inter', 'sans-serif'],

@@ -10,7 +10,7 @@ import TopBannerImage from './TopBannerImage'
   return (
     <div className='bg-darkBlue flex flex-col w-full max-h-[500px] justify-start items-center '>
 
-<ul className='flex flex-row gap-5 transition-all'>
+<ul className='flex flex-row gap-5 transition-all mb-10'>
                                 {
                                    ['Buy','Sell','Rent'].map(l => {
                                         return (

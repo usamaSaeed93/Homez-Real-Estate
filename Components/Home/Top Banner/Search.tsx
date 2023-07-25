@@ -4,7 +4,7 @@ import PowerInputIcon from "@mui/icons-material/PowerInput";
 import TuneIcon from "@mui/icons-material/Tune";
 const Search: React.FC = () => {
   return (
-    <div className="max-w-[1200px] w-full h-20 lg:flex flex-col md:flex-row justify-center border-r border-solid border-white shadow-[0px_25px_50px_0px_rgba(0, 0, 0, 0.05)] items-center m-auto bg-white shadow-lg rounded-[30px] gap-x-5 hidden">
+    <div className="max-w-[1000px] absolute z-10 top-[-1%] left-1/2  transform -translate-x-1/2 -translate-y-1/2 w-full h-20 lg:flex flex-col md:flex-row justify-center border-r border-solid border-white shadow-[0px_25px_50px_0px_rgba(0, 0, 0, 0.05)] items-center m-auto bg-white shadow-lg rounded-[30px] gap-x-5 hidden">
       <div className="flex flex-row gap-x-3  justify-start items-start w-1/2 ">
         <p className="text-gray-700 font-Inter text-xs font-semibold leading-normal">
           <PowerInputIcon />

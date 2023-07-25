@@ -6,7 +6,11 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import CountryTab from './CountryTab';
 
 const DivCarousel = () => {
-  // Replace this data with your own content or fetch it from an API
+  var $ = require("jquery");
+  if (typeof window !== "undefined") {
+    (window as any).$ = (window as any).jQuery = require("jquery");
+  }
+  
   const divs = [
     <div className="item"><CountryTab /></div>,
     <div className="item"><CountryTab /></div>,
@@ -23,9 +27,9 @@ const DivCarousel = () => {
     margin: 10,
     nav: true,
     responsive: {
-      0: { items: 3 },
-      768: { items: 3 },
-      1024: { items: 3 },
+      0: { items: 2.5 },
+      768: { items: 4 },
+      1024: { items: 5 },
     },
   };
 

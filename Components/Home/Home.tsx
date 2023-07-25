@@ -7,9 +7,12 @@ import CountryTab from './Countries/CountryTab';
 import Countries from './Countries/Countries';
 import HelpTab from './Procedure/HelpTab';
 import Procedure from './Procedure/Procedure';
+import Profile from './Profile/Profile';
+import Testimonials from './Testimonials/Testimonials';
+import Companies from './Companies/Companies';
  const Home:React.FC=()=> {
   return (
-    <div>
+    <div className='flex flex-col overflow-x-hidden '>
       <div className='mb-20 '>
  <Navbar /> 
  <TopBanner /> 
@@ -17,8 +20,14 @@ import Procedure from './Procedure/Procedure';
 <div className='lg:mt-96 mt-[600px]'>
  <FeaturedListing />
 </div>
+<div className='flex flex-col justify-center items-center'>
+
 <Countries />
 <Procedure />
+<Profile />
+<Testimonials />
+<Companies />
+</div>
     </div>
   )
 }
