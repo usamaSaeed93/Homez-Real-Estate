@@ -4,9 +4,12 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import OptionTile from '../Options/OptionTile';
-
+import { getAllProperties } from '@/utils/requests';
+import { useEffect } from 'react';
 const DivCarousel = () => {
-  
+  useEffect(()=>{
+getAllProperties().then(res=>console.log(res));
+  },[])
   var $ = require("jquery");
   if (typeof window !== "undefined") {
     (window as any).$ = (window as any).jQuery = require("jquery");

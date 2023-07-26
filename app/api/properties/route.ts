@@ -11,7 +11,7 @@ class CustomError extends Error {
 }
 export async function GET(request: Request, response: Response) {
   try {
-    const user= await Properties.countDocuments(); 
+    const user= await Properties.find(); 
     return NextResponse.json({
       message: "OK",
       status: 200,

@@ -9,13 +9,21 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../app/redux/services/hooks";
+import { changeCountry ,changeRange } from "@/app/redux/features/slice";
+
 interface SearchItems {
   location: string;
   selectedCategory: string;
   change: number;
   sort: string;
 }
+
 const Search: React.FC = () => {
+  const dispatch = useAppDispatch();
   const locations: string[] = [
     "USA",
     "Japan",
@@ -34,7 +42,7 @@ const Search: React.FC = () => {
   ];
   const [open, setOpen] = useState<boolean>(false);
   const [open2, setOpen2] = useState<boolean>(false);
-  const [location, setLocation] = useState<string>("Locations");
+  const [location, setLocation] = useState<string>("location");
   const [change, setChange] = useState<number>(20);
   const [selectedCategory, setCategory] = useState<string>();
   const [sort, setSort] = useState<string>();
@@ -48,15 +56,15 @@ const Search: React.FC = () => {
     setSearchoptions((prev) => ({
       ...prev,
       location: location || "",
-      selectedCategory:selectedCategory || "",
-      change:change || Math.random(),
-      sort:sort || ""
+      selectedCategory: selectedCategory || "",
+      change: change || Math.random(),
+      sort: sort || "",
     }));
   };
-  const handleOpen=(location:string)=>{
-   setOpen((open) => !open);
-   setLocation(location)
-  }
+  const handleOpen = (location: string) => {
+    setOpen((open) => !open);
+    setLocation(location);
+  };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setChange(parseInt(value));
@@ -80,7 +88,7 @@ const Search: React.FC = () => {
             onClick={() => setOpen((open) => !open)}
           >
             <p className="text-gray-700 font-Inter text-base font-semibold leading-normal cursor-pointer">
-          {location}
+              {location}
             </p>
             <ArrowDropDownIcon />
           </div>
@@ -125,7 +133,7 @@ const Search: React.FC = () => {
                     onChange={handleChange}
                   />
                   <span className="text-black pb-5">{change}</span>
-                  <Box sx={{ minWidth: 120 ,marginTop:"30px"}}>
+                  <Box sx={{ minWidth: 120, marginTop: "30px" }}>
                     <FormControl fullWidth>
                       <InputLabel id="demo-simple-select-label">
                         Category
@@ -140,7 +148,10 @@ const Search: React.FC = () => {
                             <MenuItem
                               key={index}
                               value={10}
-                              onClick={() => setCategory(item)}
+                              onClick={() => {
+                                setCategory(item);
+                                dispatch(changeCountry(location));
+                              }}
                             >
                               {item}
                             </MenuItem>
@@ -149,7 +160,7 @@ const Search: React.FC = () => {
                       </Select>
                     </FormControl>
                   </Box>
-                  <Box sx={{ minWidth: 120,marginTop:"30px" }}>
+                  <Box sx={{ minWidth: 120, marginTop: "30px" }}>
                     <FormControl fullWidth>
                       <InputLabel id="demo-simple-select-label">
                         Sort By

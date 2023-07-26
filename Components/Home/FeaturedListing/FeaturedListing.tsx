@@ -2,11 +2,13 @@ import React from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import Carousel from "./Carousel";
 import AddTab from "./AddTab";
-const FeaturedListing: React.FC = () => {
-  const carouselItems: React.FC<{}>[] = [AddTab, AddTab, AddTab];
+import {getAllProperties } from '../../../utils/requests'
+import { PropertyInterface } from "@/lib";
+import Link from "next/link";
+const  FeaturedListing: React.FC = async () => {
+const data:PropertyInterface[]=await getAllProperties();
 
-   
-    
+
   return (
     <div className="flex flex-col overflow-hidden ">
       <div className="flex flex-row justify-between items-center max-w-[1000px] m-auto w-full">
@@ -18,11 +20,13 @@ const FeaturedListing: React.FC = () => {
             list f all the new featured listing products are available
           </p>
         </div>
+        <Link href="/properties">
         <button className="flex flex-row justify-center items-center w-max h-14 text-black border border-white border-solid p-4 rounded-[20px]">
           See All Properties <ArrowOutwardIcon />
         </button>
+        </Link>
       </div>
-      <Carousel />
+      <Carousel data={data} />
     </div>
   );
 };
