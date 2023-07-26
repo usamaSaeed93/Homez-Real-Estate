@@ -7,10 +7,10 @@ import OptionTile from '../Options/OptionTile';
 
 const DivCarousel = () => {
   
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = require("jquery");
-    }
-    
+  var $ = require("jquery");
+  if (typeof window !== "undefined") {
+    (window as any).$ = (window as any).jQuery = require("jquery");
+  }
   const divs = [
     <div className="item"><OptionTile /></div>,
     <div className="item"><OptionTile /></div>,

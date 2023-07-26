@@ -11,7 +11,7 @@ const Options:React.FC=()=> {
 <OptionTile />
 {
     [1,2,3,4].map((item,index)=>{
-        return  <OptionTab />
+        return  <OptionTab key={index} />
          
     })
 }

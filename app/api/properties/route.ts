@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
-import {dataArray} from '../../../lib/datas'
+import Properties from '../../../models/user'
+import dbConnect from "@/lib/mongodb";
 
+dbConnect();
 class CustomError extends Error {
   constructor(message: string) {
     super(message);
@@ -9,10 +11,11 @@ class CustomError extends Error {
 }
 export async function GET(request: Request, response: Response) {
   try {
-    return Response.json({
+    const user= await Properties.countDocuments(); 
+    return NextResponse.json({
       message: "OK",
       status: 200,
-      data: dataArray,
+      data:user
     });
   } catch (err: any) {
     if (err instanceof CustomError) {
