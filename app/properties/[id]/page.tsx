@@ -1,10 +1,11 @@
 import React from 'react'
 import Description from '@/Components/Description/Description';
-const property:React.FC=()=> {
+const page=({ params }: { params: { id: string } })=> {
+const id=params.id;
   return (
     <div>
-<Description />
+<Description id={id}/>
     </div>
   )
 }
-export default property;
+export default page;

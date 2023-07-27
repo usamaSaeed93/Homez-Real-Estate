@@ -2,6 +2,8 @@ import React from 'react'
 import AddTab from '../Home/FeaturedListing/AddTab';
 import { PropertyInterface } from '@/lib';
 import { getAllProperties } from '@/utils/requests';
+
+
 const PropertyGrid:React.FC= async ()=> {
     const data:PropertyInterface[]=await getAllProperties();
   return (

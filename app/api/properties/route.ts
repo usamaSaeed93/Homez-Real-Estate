@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Properties from '../../../models/user'
+import Properties from "../../../models/user";
 import dbConnect from "@/lib/mongodb";
 
 dbConnect();
@@ -11,11 +11,11 @@ class CustomError extends Error {
 }
 export async function GET(request: Request, response: Response) {
   try {
-    const user= await Properties.find();
+    const user = await Properties.find();
     return NextResponse.json({
       message: "OK",
       status: 200,
-      data:user
+      data: user,
     });
   } catch (err: any) {
     if (err instanceof CustomError) {

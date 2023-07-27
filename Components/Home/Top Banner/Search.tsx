@@ -28,16 +28,16 @@ interface SearchItems {
 const Search: React.FC = () => {
   const dispatch = useDispatch();
   const locations: string[] = [
-    "USA",
-    "Japan",
-    "Canada",
     "Belgium",
     "Finland",
     "Pakistan",
     "India",
     "Italy",
+    "United States",
+    "Japan",
+    "Canada",
   ];
-  const category: string[] = ["villa", "hotel", "plaza", "restaurant"];
+  const category: string[] = ["Villa", "Appartment", "Home", "TownHome","FarmHouse"];
   const sortingOptions: string[] = [
     "Sort by Newly Added",
     "Sort by Old",
@@ -82,6 +82,10 @@ const Search: React.FC = () => {
     setCategory(event.target.value as string);
     dispatch(changeCategory(event.target.value));
   };
+  const handleChange4 = (event: SelectChangeEvent) => {
+    setLocation(event.target.value as string);
+    dispatch(changeCountry(event.target.value));
+  };
   return (
     <div className="max-w-[1000px] absolute z-10 top-[-1%] left-1/2  transform -translate-x-1/2 -translate-y-1/2 w-full h-20 lg:flex flex-col md:flex-row justify-center border-r border-solid border-white shadow-[0px_25px_50px_0px_rgba(0, 0, 0, 0.05)] items-center m-auto bg-white shadow-lg rounded-[30px] gap-x-5 hidden">
       <div className="flex flex-row gap-x-3  justify-start items-start w-1/2 ">
@@ -95,7 +99,7 @@ const Search: React.FC = () => {
         />
       </div>
       <div className="flex flex-row justify-center items-center">
-        <div className={`flex flex-col ${open ? "pt-20" : "pt-0"} `}>
+        {/* <div className={`flex flex-col ${open ? "pt-20" : "pt-0"} `}>
           <div
             className=" items-start border-l border-r border-solid border-black border-opacity-25 flex flex-row justify-between gap-x-10 px-5 transition-all cursor-pointer "
             onClick={() => setOpen((open) => !open)}
@@ -108,11 +112,11 @@ const Search: React.FC = () => {
           <div
             className={`w-auto ${
               open ? "flex" : " hidden"
-            } h-20 overflow-y-auto flex flex-col justify-center items-center pt-3 bg-white rounded-lg shadow-lg } `}
+            } h-20 overflow-y-auto flex  flex-col justify-center items-center pt-3 bg-white rounded-lg shadow-lg } `}
           >
-            {locations?.map((location) => {
+            {locations?.map((location,index) => {
               return (
-                <p
+                <p key={index}
                   className="text-bold font-Manrope text-lg py-3 cursor-pointer "
                   onClick={() => {
                     handleOpen(location);
@@ -124,7 +128,27 @@ const Search: React.FC = () => {
               );
             })}
           </div>
-        </div>
+        </div> */}
+        <Box sx={{ minWidth: 120 }} className="border-none">
+          <FormControl fullWidth className="border-none hover:border-none">
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={location}
+              label="Location"
+              onChange={handleChange4}
+              className="border-none"
+            >
+              {locations?.map((item, index) => {
+                return (
+                  <MenuItem key={index} value={item}>
+                    {item}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+        </Box>
 
         <div>
           <div className=" flex flex-row justify-center items-center font-white font-normal text-base gap-x-10 ">
