@@ -5,9 +5,9 @@ import ShowerIcon from "@mui/icons-material/Shower";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import Image from "next/image";
 import SendIcon from "@mui/icons-material/Send";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { PropertyInterface } from "@/lib";
 interface AddTabInterface{
 div:PropertyInterface

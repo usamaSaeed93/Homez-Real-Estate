@@ -9,11 +9,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+
+import { useDispatch } from "react-redux";
 import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/redux/services/hooks";
-import { changeCountry ,changeRange } from "@/app/redux/features/slice";
+  changeCountry,
+  changeRange,
+  changeCategory,
+  sortingOption,
+} from "@/app/redux/features/slice";
 
 interface SearchItems {
   location: string;
@@ -23,7 +26,7 @@ interface SearchItems {
 }
 
 const Search: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const locations: string[] = [
     "USA",
     "Japan",
@@ -52,6 +55,7 @@ const Search: React.FC = () => {
     change: 1,
     sort: "",
   });
+
   const handleSearch = () => {
     setSearchoptions((prev) => ({
       ...prev,
@@ -68,6 +72,15 @@ const Search: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setChange(parseInt(value));
+    dispatch(changeRange(parseInt(value)));
+  };
+  const handleChange2 = (event: SelectChangeEvent) => {
+    setSort(event.target.value as string);
+    dispatch(sortingOption(event.target.value));
+  };
+  const handleChange3 = (event: SelectChangeEvent) => {
+    setCategory(event.target.value as string);
+    dispatch(changeCategory(event.target.value));
   };
   return (
     <div className="max-w-[1000px] absolute z-10 top-[-1%] left-1/2  transform -translate-x-1/2 -translate-y-1/2 w-full h-20 lg:flex flex-col md:flex-row justify-center border-r border-solid border-white shadow-[0px_25px_50px_0px_rgba(0, 0, 0, 0.05)] items-center m-auto bg-white shadow-lg rounded-[30px] gap-x-5 hidden">
@@ -101,7 +114,10 @@ const Search: React.FC = () => {
               return (
                 <p
                   className="text-bold font-Manrope text-lg py-3 cursor-pointer "
-                  onClick={() => handleOpen(location)}
+                  onClick={() => {
+                    handleOpen(location);
+                    dispatch(changeCountry(location));
+                  }}
                 >
                   {location}
                 </p>
@@ -141,18 +157,13 @@ const Search: React.FC = () => {
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        label="Category"
+                        value={selectedCategory}
+                        label="Catefory"
+                        onChange={handleChange3}
                       >
                         {category?.map((item, index) => {
                           return (
-                            <MenuItem
-                              key={index}
-                              value={10}
-                              onClick={() => {
-                                setCategory(item);
-                                dispatch(changeCountry(location));
-                              }}
-                            >
+                            <MenuItem key={index} value={item}>
                               {item}
                             </MenuItem>
                           );
@@ -168,15 +179,13 @@ const Search: React.FC = () => {
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        label="Sort By"
+                        value={sort}
+                        label="Sort"
+                        onChange={handleChange2}
                       >
                         {sortingOptions?.map((item, index) => {
                           return (
-                            <MenuItem
-                              key={index}
-                              value={10}
-                              onClick={() => setSort(item)}
-                            >
+                            <MenuItem key={index} value={item}>
                               {item}
                             </MenuItem>
                           );

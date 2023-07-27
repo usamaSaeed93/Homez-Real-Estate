@@ -10,6 +10,16 @@ const userSchema = new mongoose.Schema({
     bathRoom: Number,
     area: Number,
     condition: Boolean,
+    description:String,
+    option:String,
+    images:{
+      thumbnail:String,
+      banner:String,
+      banner2:String,
+    },
+    liked:Boolean,
+    category:String,
+    price:Number
   },
 });
 

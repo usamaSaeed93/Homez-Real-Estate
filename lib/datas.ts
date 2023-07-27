@@ -3,27 +3,24 @@ interface PropertyInterface {
   name: string;
   location: string;
   country: string;
+  description:string;
+  option:string;
+  category:string;
+  price:number;
+  images?:{
+    thumbnail?:string; 
+    banner?:string;
+    banner2?:string
+  },
+liked:boolean,
   specifications: {
     room: number;
     bathRoom: number;
     area: number;
     condition: boolean;
-  }
+  };
 }
-
-export const dataArray: PropertyInterface[] = [
-  {
-    id: "ch2301",
-    name: "Modern Loft Apartment",
-    location: "10 Urban Street, Berlin, Germany",
-    country: "Germany",
-    specifications: {
-      room: 2,
-      bathRoom: 1,
-      area: 900,
-      condition: true,
-    },
-  },
+const properties = [
   {
     id: "in7523",
     name: "Spacious Family Villa",
@@ -35,6 +32,16 @@ export const dataArray: PropertyInterface[] = [
       area: 2800,
       condition: true,
     },
+    description: "Charming and spacious family villa located in a peaceful neighborhood. This beautiful property features five bedrooms, three bathrooms, and a large living area, making it perfect for a growing family. The villa comes with modern amenities and a well-maintained garden, providing a serene retreat in the bustling city. Conveniently located close to schools, parks, and shopping centers.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Villa",
+    price: 750000,
   },
   {
     id: "us8416",
@@ -47,6 +54,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1500,
       condition: true,
     },
+    description: "Modern and stylish townhome in the heart of New York City. This contemporary property features three bedrooms, two bathrooms, and an open-concept living space with high-end finishes. Enjoy the convenience of city living with easy access to restaurants, shops, and cultural attractions.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: false,
+    category: "Townhome",
+    price: 3500,
   },
   {
     id: "jp6128",
@@ -59,6 +76,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1800,
       condition: false,
     },
+    description: "Experience the charm of traditional Japanese living in this classic Machiya townhouse. The property features four bedrooms, two bathrooms, and elegant wooden interiors. Embrace the cultural heritage and serenity of Kyoto while being close to popular attractions and historic landmarks.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: true,
+    category: "Machiya",
+    price: 2000,
   },
   {
     id: "be1235",
@@ -71,6 +98,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1000,
       condition: true,
     },
+    description: "Stylish and elegant apartment located in the heart of Brussels. This two-bedroom property features modern design and offers a comfortable living space. Enjoy the convenience of city living with easy access to restaurants, shops, and cultural landmarks. Ideal for young professionals and couples seeking a contemporary urban lifestyle.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: false,
+    category: "Apartment",
+    price: 350000,
   },
   {
     id: "ca4357",
@@ -83,6 +120,16 @@ export const dataArray: PropertyInterface[] = [
       area: 3500,
       condition: true,
     },
+    description: "Indulge in luxury with this breathtaking beachfront villa in Vancouver. This six-bedroom property offers stunning ocean views, high-end amenities, and a private beach access. Relax in the lap of luxury while enjoying the tranquility of the sea. Perfect for those seeking an exclusive coastal retreat.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Villa",
+    price: 2200000,
   },
   {
     id: "pk9205",
@@ -95,6 +142,16 @@ export const dataArray: PropertyInterface[] = [
       area: 2000,
       condition: true,
     },
+    description: "Escape to nature with this hillside retreat in Islamabad. Surrounded by lush greenery, this three-bedroom property offers breathtaking views and a serene atmosphere. Embrace the tranquility of the mountains while still being close to city amenities. Ideal for nature lovers and those seeking a peaceful haven.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: false,
+    category: "Retreat",
+    price: 1200,
   },
   {
     id: "it5368",
@@ -107,6 +164,16 @@ export const dataArray: PropertyInterface[] = [
       area: 2800,
       condition: true,
     },
+    description: "Experience the charm of Tuscany with this rustic farmhouse nestled amidst olive groves. The property boasts seven bedrooms, three bathrooms, and classic Tuscan architecture. Enjoy the tranquility of the countryside while still being close to cultural attractions and vineyards. Ideal for those seeking an authentic Tuscan experience.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Farmhouse",
+    price: 890000,
   },
   {
     id: "de4926",
@@ -119,6 +186,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1200,
       condition: true,
     },
+    description: "Escape to the German countryside with this charming country cottage. The property features three bedrooms, two bathrooms, and a cozy living area with traditional design. Embrace the serenity of nature while still being close to city amenities. Ideal for those seeking a peaceful retreat away from the hustle and bustle.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: false,
+    category: "Cottage",
+    price: 1800,
   },
   {
     id: "us6214",
@@ -131,6 +208,16 @@ export const dataArray: PropertyInterface[] = [
       area: 750,
       condition: true,
     },
+    description: "Live in style with this chic urban studio loft in the heart of Chicago. This modern property offers one bedroom, one bathroom, and an open living space with industrial design. Enjoy the vibrant city life with easy access to restaurants, cafes, and cultural events. Ideal for young professionals and creatives seeking a trendy urban living space.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: true,
+    category: "Loft",
+    price: 2000,
   },
   {
     id: "jp3509",
@@ -143,6 +230,16 @@ export const dataArray: PropertyInterface[] = [
       area: 2200,
       condition: true,
     },
+    description: "Find inner peace with this Zen garden house in the heart of Tokyo. This five-bedroom property offers a tranquil atmosphere with a traditional Japanese garden. Embrace the harmony of nature while still being close to the city's bustling energy. Ideal for those seeking a balance between modern living and Zen serenity.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: false,
+    category: "House",
+    price: 1850000,
   },
   {
     id: "ca3298",
@@ -155,6 +252,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1800,
       condition: false,
     },
+    description: "Experience rustic charm with this charming log cabin in Calgary. The property offers four bedrooms, two bathrooms, and a cozy living space with a wood-burning fireplace. Embrace the natural beauty of the surrounding pine trees while still being close to city amenities. Ideal for those seeking a cozy and intimate living space.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: true,
+    category: "Log Cabin",
+    price: 1500,
   },
   {
     id: "in2714",
@@ -167,6 +274,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1100,
       condition: true,
     },
+    description: "Live in the clouds with this city high-rise apartment in Bangalore. This two-bedroom property offers stunning views of the city skyline and modern amenities. Experience the excitement of urban living with easy access to restaurants, shopping malls, and entertainment. Ideal for young professionals and couples seeking a sophisticated city lifestyle.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: false,
+    category: "Apartment",
+    price: 450000,
   },
   {
     id: "be5831",
@@ -179,6 +296,16 @@ export const dataArray: PropertyInterface[] = [
       area: 6000,
       condition: true,
     },
+    description: "Live like royalty with this historic castle in Brussels. This grand property offers ten bedrooms, five bathrooms, and majestic architecture with rich history. Embrace the grandeur of the past while enjoying modern comforts and amenities. Ideal for those seeking an extraordinary and unique living experience in a castle setting.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Castle",
+    price: 4000000,
   },
   {
     id: "ca5291",
@@ -191,6 +318,16 @@ export const dataArray: PropertyInterface[] = [
       area: 3200,
       condition: true,
     },
+    description: "Embrace the winter wonderland with this ski resort chalet in Whistler. This six-bedroom property offers a cozy retreat with stunning mountain views. Enjoy the convenience of ski-in/ski-out access and proximity to the ski resort. Ideal for ski enthusiasts and nature lovers seeking a mountain getaway.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: false,
+    category: "Chalet",
+    price: 3000,
   },
   {
     id: "pk9514",
@@ -203,6 +340,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1200,
       condition: true,
     },
+    description: "Experience contemporary city living with this modern apartment in Karachi. The property features three bedrooms, two bathrooms, and a stylish living space with modern finishes. Enjoy the convenience of city amenities, restaurants, and shopping centers at your doorstep. Ideal for those seeking a trendy and vibrant urban lifestyle.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Apartment",
+    price: 180000,
   },
   {
     id: "it3687",
@@ -215,6 +362,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1800,
       condition: true,
     },
+    description: "Escape to the Amalfi Coast with this stunning seaside villa. The property offers four bedrooms, three bathrooms, and breathtaking views of the Mediterranean Sea. Relax in the private garden or take a short walk to the beach. Ideal for those seeking a luxurious coastal retreat with Italian charm.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: false,
+    category: "Villa",
+    price: 5000,
   },
   {
     id: "de1742",
@@ -227,6 +384,16 @@ export const dataArray: PropertyInterface[] = [
       area: 2500,
       condition: false,
     },
+    description: "Embrace the beauty of nature with this green countryside retreat in Hamburg. This five-bedroom property offers a tranquil atmosphere and scenic views of meadows and forests. Enjoy the serenity of the countryside while still being close to city amenities. Ideal for those seeking a peaceful escape in nature's embrace.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Retreat",
+    price: 1400000,
   },
   {
     id: "us7459",
@@ -239,6 +406,16 @@ export const dataArray: PropertyInterface[] = [
       area: 4000,
       condition: true,
     },
+    description: "Indulge in luxury with this beachfront paradise in Malibu. This eight-bedroom property offers direct access to the beach and panoramic ocean views. Relax in the infinity pool or take a stroll along the sandy shores. Ideal for those seeking a luxurious beachfront lifestyle with privacy and exclusivity.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Beach House",
+    price: 7000000,
   },
   {
     id: "jp2851",
@@ -251,6 +428,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1800,
       condition: false,
     },
+    description: "Experience the charm of traditional Japanese living in this classic Machiya townhouse. The property features four bedrooms, two bathrooms, and elegant wooden interiors. Embrace the cultural heritage and serenity of Kyoto while being close to popular attractions and historic landmarks.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: true,
+    category: "Machiya",
+    price: 2200,
   },
   {
     id: "hf4353",
@@ -263,6 +450,16 @@ export const dataArray: PropertyInterface[] = [
       area: 1800,
       condition: true,
     },
+    description: "Step into a world of opulence with this exclusive mansion in Venice. This eight-bedroom property features stunning architecture, luxurious interiors, and views of the iconic canals. Live in grandeur and sophistication in the heart of Venice. Ideal for those seeking an extraordinary and prestigious living experience.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: false,
+    category: "Mansion",
+    price: 10000000,
   },
   {
     id: "gk9821",
@@ -275,6 +472,16 @@ export const dataArray: PropertyInterface[] = [
       area: 5000,
       condition: true,
     },
+    description: "Escape to the lap of luxury with this exclusive villa retreat in Los Angeles. This twelve-bedroom property offers breathtaking views, a private pool, and high-end amenities. Enjoy the serenity of the Hollywood Hills while still being close to the city's entertainment and cultural scene. Ideal for celebrities and those seeking an extraordinary living experience.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Villa",
+    price: 15000000,
   },
   {
     id: "bh7832",
@@ -287,6 +494,16 @@ export const dataArray: PropertyInterface[] = [
       area: 2000,
       condition: true,
     },
+    description: "Experience the beauty of the Canadian Rockies with this mountain cabin getaway in Banff. The property features five bedrooms, three bathrooms, and stunning views of the surrounding peaks. Enjoy outdoor adventures and the beauty of nature while still being close to town amenities. Ideal for those seeking a cozy mountain retreat.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Rent",
+    liked: false,
+    category: "Cabin",
+    price: 2500,
   },
   {
     id: "ja9102",
@@ -299,197 +516,83 @@ export const dataArray: PropertyInterface[] = [
       area: 2200,
       condition: true,
     },
+    description: "Escape to the beautiful island of Bali with this coastal retreat. The property offers four bedrooms, three bathrooms, and breathtaking views of the Indian Ocean. Relax in the private infinity pool or take a short walk to the sandy beach. Ideal for those seeking a tropical paradise and a tranquil living experience.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: true,
+    category: "Retreat",
+    price: 4000000,
   },
   {
-    id: "df3178",
-    name: "Spacious Family Home",
-    location: "15 Maple Avenue, Toronto, Canada",
-    country: "Canada",
+    id: "fr5763",
+    name: "Château de Versailles",
+    location: "1 Royal Palace, Versailles, France",
+    country: "France",
+    specifications: {
+      room: 30,
+      bathRoom: 15,
+      area: 10000,
+      condition: true,
+    },
+    description: "Step into history with this majestic château in Versailles. The property offers thirty bedrooms, fifteen bathrooms, and opulent interiors fit for royalty. Embrace the grandeur of the past while enjoying modern luxuries and amenities. Ideal for those seeking an extraordinary living experience in a historic setting.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: false,
+    category: "Château",
+    price: 50000000,
+  },
+  {
+    id: "sp6281",
+    name: "Spanish Villa",
+    location: "25 Costa del Sol, Marbella, Spain",
+    country: "Spain",
     specifications: {
       room: 6,
-      bathRoom: 3,
-      area: 2800,
-      condition: true,
-    },
-  },
-  {
-    id: "vc6254",
-    name: "Contemporary Urban Loft",
-    location: "7 Loft Street, New York, USA",
-    country: "United States",
-    specifications: {
-      room: 1,
-      bathRoom: 1,
-      area: 1000,
-      condition: true,
-    },
-  },
-  {
-    id: "wt8573",
-    name: "Lakefront Retreat",
-    location: "25 Lakeside Drive, Geneva, Switzerland",
-    country: "Switzerland",
-    specifications: {
-      room: 4,
-      bathRoom: 3,
-      area: 2100,
-      condition: true,
-    },
-  },
-  {
-    id: "ld6942",
-    name: "Historic Townhouse",
-    location: "21 Heritage Street, Rome, Italy",
-    country: "Italy",
-    specifications: {
-      room: 9,
-      bathRoom: 4,
-      area: 2500,
-      condition: false,
-    },
-  },
-  {
-    id: "gy5928",
-    name: "Cozy Log Cabin",
-    location: "50 Forest Trail, Oslo, Norway",
-    country: "Norway",
-    specifications: {
-      room: 4,
-      bathRoom: 2,
-      area: 1800,
-      condition: false,
-    },
-  },
-  {
-    id: "xt4267",
-    name: "Urban Penthouse",
-    location: "12 High Street, Tokyo, Japan",
-    country: "Japan",
-    specifications: {
-      room: 3,
-      bathRoom: 2,
-      area: 1500,
-      condition: true,
-    },
-  },
-  {
-    id: "su1853",
-    name: "City View Apartment",
-    location: "40 Skyline Avenue, Dubai, UAE",
-    country: "United Arab Emirates",
-    specifications: {
-      room: 2,
-      bathRoom: 2,
-      area: 1000,
-      condition: true,
-    },
-  },
-  {
-    id: "cn8471",
-    name: "Modern Urban Villa",
-    location: "8 Beijing Road, Beijing, China",
-    country: "China",
-    specifications: {
-      room: 6,
-      bathRoom: 3,
-      area: 2800,
-      condition: true,
-    },
-  },
-  {
-    id: "de9174",
-    name: "Countryside Cottage",
-    location: "30 Forest Lane, Munich, Germany",
-    country: "Germany",
-    specifications: {
-      room: 4,
-      bathRoom: 2,
-      area: 1800,
-      condition: false,
-    },
-  },
-  {
-    id: "pk7240",
-    name: "Suburban Family Home",
-    location: "15 Green Street, Lahore, Pakistan",
-    country: "Pakistan",
-    specifications: {
-      room: 5,
-      bathRoom: 3,
-      area: 2200,
-      condition: true,
-    },
-  },
-  {
-    id: "in5369",
-    name: "Vibrant City Condo",
-    location: "25 Market Road, Mumbai, India",
-    country: "India",
-    specifications: {
-      room: 2,
-      bathRoom: 1,
-      area: 800,
-      condition: true,
-    },
-  },
-  {
-    id: "be8325",
-    name: "Charming Townhouse",
-    location: "10 Canal Street, Brussels, Belgium",
-    country: "Belgium",
-    specifications: {
-      room: 3,
-      bathRoom: 2,
-      area: 1200,
-      condition: true,
-    },
-  },
-  {
-    id: "jp3197",
-    name: "Traditional Ryokan",
-    location: "5 Sakura Lane, Kyoto, Japan",
-    country: "Japan",
-    specifications: {
-      room: 6,
-      bathRoom: 4,
-      area: 2500,
-      condition: true,
-    },
-  },
-  {
-    id: "us6421",
-    name: "Historic Brownstone",
-    location: "30 Elm Street, Boston, USA",
-    country: "United States",
-    specifications: {
-      room: 7,
       bathRoom: 4,
       area: 3000,
       condition: true,
     },
-  },
-  {
-    id: "ca9265",
-    name: "Scenic Mountain Lodge",
-    location: "55 Summit Road, Vancouver, Canada",
-    country: "Canada",
-    specifications: {
-      room: 3,
-      bathRoom: 2,
-      area: 1800,
-      condition: false,
+    description: "Embrace the Mediterranean lifestyle with this Spanish villa in Marbella. This six-bedroom property offers a private garden, swimming pool, and views of the coastline. Enjoy the vibrant Spanish culture, sandy beaches, and golf courses nearby. Ideal for those seeking a luxurious and relaxed living experience on the Costa del Sol.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
     },
+    option: "For Rent",
+    liked: true,
+    category: "Villa",
+    price: 6000,
   },
   {
-    id: "it5784",
-    name: "Elegant Villa",
-    location: "8 Tuscan Avenue, Florence, Italy",
-    country: "Italy",
+    id: "au9274",
+    name: "Modern Waterfront House",
+    location: "10 Bayview Drive, Sydney, Australia",
+    country: "Australia",
     specifications: {
       room: 4,
       bathRoom: 3,
-      area: 2000,
+      area: 2800,
       condition: true,
     },
-  },
+    description: "Experience waterfront living with this modern house in Sydney. The property features four bedrooms, three bathrooms, and stunning views of the bay. Enjoy the tranquil waterfront lifestyle while still being close to the city's attractions and amenities. Ideal for those seeking a contemporary living experience with a touch of nature's beauty.",
+    images: {
+      thumbnail: "path-to-thumbnail-image",
+      banner: "path-to-banner-image",
+      banner2: "path-to-banner2-image",
+    },
+    option: "For Sale",
+    liked: false,
+    category: "House",
+    price: 3800000,
+  }
 ];
+
+
