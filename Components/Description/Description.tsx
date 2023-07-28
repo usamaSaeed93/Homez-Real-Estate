@@ -15,8 +15,8 @@ interface DesInterface{
 }
 const Description:React.FC<DesInterface>  = async ({id}) => {
   const data = await SearchByID(id);
-  // const {name,location,country,description,specifications,option,category,price}= data?.data[0];
-  console.log(data.data);
+const {name,country,specifications,location,description} = data;
+ 
   return (
     <div className="flex flex-row  ;m-auto justify-evenly items-start max-w-[1200px] my-5">
       <div className="w-1/2 mt-auto">
@@ -24,29 +24,29 @@ const Description:React.FC<DesInterface>  = async ({id}) => {
         <div>
           <Carousel />
         </div>
-        {/* <p className="text-3xl text-black opacity-50 pt-6">{name}</p> */}
-        {/* <p className="text-2xl text-black opacity-50 pt-6">{location}</p> */}
+        <p className="text-3xl text-black opacity-50 pt-6">{name}</p>
+        <p className="text-2xl text-black opacity-50 pt-6 pb-3">{location}</p>
         <p className="max-w-full pr-4 text-start text-sm text-normal">
-       {/* {description} */}
+       {description}
         </p>
         <div className="flex flex-row justify-start items-center  gap-x-5 border-b border-solid border-black border-opacity-25  w-[95%] pb-3 mt-10">
         <div className="flex flex-row gap-1 justify-center items-center text-gray-500 text-2xl border border-black border-opacity-25 p-3 rounded-lg">
           <SingleBedIcon sx={{
             fontSize:"40px"
           }}/>
-          {/* <p> {specifications.room} Beds</p> */}
+          <p> {specifications.room} Beds</p>
         </div>
         <div className="flex flex-row gap-1 justify-center items-center text-gray-500 text-2xl border border-black border-opacity-25 p-3 rounded-lg">
           <ShowerIcon sx={{
             fontSize:"40px"
           }}/>
-          {/* <p> {specifications.bathRoom} Bathroom</p> */}
+          <p> {specifications.bathRoom} Bathroom</p>
         </div>
         <div className="flex flex-row gap-1 justify-center items-center text-gray-500 text-2xl border border-black border-opacity-25 p-3 rounded-lg">
           <SquareFootIcon sx={{
             fontSize:"40px"
           }}/>
-          {/* <p>{specifications.area} Sqft</p> */}
+          <p>{specifications.area} Sqft</p>
         </div>
       </div>
       </div>

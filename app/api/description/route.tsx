@@ -12,14 +12,14 @@ class CustomError extends Error {
 export async function POST(request: Request, response: Response) {
 const {id}=await request.json();
   const user = await Properties.findOne({id:id});
-  console.log(user)
+  console.log(user + "Route");
+  console.log(id + "Route");
   try {
     return NextResponse.json({
       message: "OK",
       status: 200,
       data:user
     });
-    
   } catch (err: any) {
     if (err instanceof CustomError) {
       return NextResponse.json({

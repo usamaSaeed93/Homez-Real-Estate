@@ -9,7 +9,11 @@ import { Drawer } from "@mui/material";
 const Navbar: React.FC = () => {
   return (
     <div className="flex flex-row bg-darkBlue justify-between items-center px-4 h-20 max-w-[1400px] m-auto">
-       <p className="font-bold font-Manrope text-xl text-white pr-4 flex lg:hidden">Homez</p>
+      <Link href='/'>
+      <p className="font-bold font-Manrope text-xl text-white pr-4 flex lg:hidden cursor-pointer">
+        Homez
+      </p>
+      </Link>
       <div className="lg:flex flex-row justify-center items-center hidden">
         {/* <Image src="" alt="homez" /> */}
         <p className="font-bold font-Manrope text-xl text-white pr-4">Homez</p>
@@ -55,15 +59,17 @@ const Navbar: React.FC = () => {
           <AccountCircleIcon />
           LogIn/SignUp
         </div>
+        <Link href='/create-property'>
         <button className="flex flex-row justify-center items-center w-max h-14 text-white border border-white border-solid p-4 rounded-[20px]">
           Add Property <ArrowOutwardIcon />
         </button>
+        </Link>
       </div>
 
       <button className="flex flex-row justify-center items-center w-max h-14 text-white border border-white border-solid p-4 rounded-[20px] lg:hidden">
         Add Property <ArrowOutwardIcon />
       </button>
-        <Drawer />
+      <Drawer />
     </div>
   );
 };
