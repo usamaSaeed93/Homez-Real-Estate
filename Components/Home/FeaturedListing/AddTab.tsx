@@ -14,11 +14,11 @@ interface AddTabInterface {
   div: PropertyInterface;
 }
 const AddTab: React.FC<AddTabInterface> = ({ div }) => {
-  const { name, location, country, specifications, option, liked,id } = div;
+  const { name, location, country, specifications, option, liked, id } = div;
   return (
     <div className="max-w-[300px] sm:max-w-[400px] min-h-fit  flex flex-col justify-start items-start px-4">
       <Link href={`/properties/${id}`}>
-      <Image src={room} alt="room" className=" w-full rounded-lg" />
+        <Image src={room} alt="room" className=" w-full rounded-lg" />
       </Link>
       <p className="text-center text-black font-medium font-Manrope text-lg pb-3">
         {name}

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import Properties from "../../../models/property";
+import User from "@/models/users";
 import dbConnect from "@/lib/mongodb";
+import bcryptjs from 'bcryptjs'
 
 dbConnect();
 class CustomError extends Error {
@@ -10,15 +11,35 @@ class CustomError extends Error {
   }
 }
 export async function POST(request: Request, response: Response) {
-const {id}=await request.json();
-  const user = await Properties.findOne({id:id});
-  console.log(user + "Route");
-  console.log(id + "Route");
+  const { firstName, lastName, email, password } = await request.json();
+
+ 
+  //hash Password
   try {
+    const user = await User.findOne({ email });
+    if (user) {
+        return NextResponse.json(
+          {
+            error: "User Already exists",
+          },
+          {
+            status: 400,
+          }
+        );
+      }
+      const salt = await bcryptjs.genSalt(10);
+      const hashPassword = await bcryptjs.hash(password,salt);
+      const createdUser = await User.create({
+        firstName,
+        lastName,
+        email,
+        password:hashPassword
+      })
+
     return NextResponse.json({
       message: "OK",
       status: 200,
-      data:user
+      data:createdUser
     });
   } catch (err: any) {
     if (err instanceof CustomError) {
