@@ -11,13 +11,13 @@ const AllProperties:React.FC=()=> {
   const location = useSelector((state: RootState) => state.specs.country);
   return (
     <div>
-
     <div className='flex flex-col pt-10 h-max'>
         <TopBanner />
     </div>
     <div>
-      { location=== "default"?    <Suspense fallback={<Loading />}><PropertyGrid /> </Suspense>   :
-        <SearchedPropertyGrid />}
+       {/* { location === "default"?  <PropertyGrid /> :  */}
+        <SearchedPropertyGrid />
+         {/* }  */}
     </div>
     </div>
   )

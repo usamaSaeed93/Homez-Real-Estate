@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Properties from "../../../models/property";
+import Properties from "@/models/property";
 import dbConnect from "@/lib/mongodb";
 
 dbConnect();
@@ -10,13 +10,40 @@ class CustomError extends Error {
   }
 }
 export async function POST(request: Request, response: Response) {
-  const { location, category, sort, range } = await request.json();
-    const user = await Properties.find({ country: location });
+  const {
+    category,
+    country,
+    description,
+    id,
+    location,
+    name,
+    option,
+    price,
+    specifications: { area, bathRoom, condition, room },
+  } = await request.json();
   try {
+    const createdUser = await Properties.create({
+      category,
+      country,
+      description,
+      id,
+      location,
+      name,
+      option,
+      price,
+      specifications: { area, bathRoom, condition, room },
+      images: {
+        thumbnail: "pathtothumbnailimage",
+        banner: "path-to-banner-image",
+        banner2: "path-to-banner2-image",
+      },
+      liked: true,
+    });
+console.log(createdUser + "created user")
     return NextResponse.json({
       message: "OK",
       status: 200,
-      data: user,
+      data:true,
     });
   } catch (err: any) {
     if (err instanceof CustomError) {

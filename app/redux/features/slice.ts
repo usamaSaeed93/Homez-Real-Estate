@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
-  country: "default",
-  range: 0,
-  category: "default",
+  country: "Pakistan",
+  range: 3000,
+  category: "Villa",
   sortBy: "default",
+  loginStatus:false
 };
 export const PropertySlice = createSlice({
   name: "Property",
@@ -22,7 +23,10 @@ export const PropertySlice = createSlice({
     sortingOption(state, action: PayloadAction<string>) {
       state.sortBy = action.payload;
     },
+    isLogin(state,action:PayloadAction<boolean>){
+      state.loginStatus = action.payload;
+    }
   },
 });
-export const {changeCategory,changeCountry,changeRange,sortingOption} = PropertySlice.actions;
+export const {changeCategory,changeCountry,changeRange,sortingOption,isLogin} = PropertySlice.actions;
 export default PropertySlice.reducer;

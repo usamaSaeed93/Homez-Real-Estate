@@ -10,18 +10,23 @@ type FormValues = {
   password: string;
 };
 const SignUpPage: React.FC = () => {
-  const [formData, setFormData] = useState<FormValues >({firstName:"",lastName:"",email:"",password:""}) ;
+  const [formData, setFormData] = useState<FormValues>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormValues>();
-  const fetchData = async (data:object) => {
+  const fetchData = async (data: object) => {
     const res = await SignUpFunction(data);
     console.log(res);
   };
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-  fetchData(data);
+    fetchData(data);
   };
 
   return (

@@ -15,9 +15,12 @@ interface DesInterface{
 }
 const Description:React.FC<DesInterface>  = async ({id}) => {
   const data = await SearchByID(id);
-const {name,country,specifications,location,description} = data;
- 
+if(data){
+  var {name,country,specifications,location,description} = data;
+}
   return (
+    <>
+  
     <div className="flex flex-row  ;m-auto justify-evenly items-start max-w-[1200px] my-5">
       <div className="w-1/2 mt-auto">
         <p>Property Description</p>
@@ -82,6 +85,7 @@ const {name,country,specifications,location,description} = data;
         </div>
       </div>
     </div>
+    </>
   );
 };
 

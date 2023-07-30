@@ -43,7 +43,6 @@ export const SearchByID = async (pid: string) => {
 };
 
 export const SignUpFunction = async (params: object) => {
-
   const options = {
     method: "POST",
     body: JSON.stringify(params), // Pass the params directly without wrapping in another object
@@ -59,10 +58,10 @@ export const SignUpFunction = async (params: object) => {
   return response.data; // No need to use 'await' here, as 'response.data' is not a promise
 };
 
-export const LogInFunction = async ( params : object) =>{
+export const LogInFunction = async (params: object) => {
   const options = {
     method: "POST",
-    body: JSON.stringify(params), 
+    body: JSON.stringify(params),
     headers: {
       "content-type": "application/json",
     },
@@ -73,4 +72,57 @@ export const LogInFunction = async ( params : object) =>{
   }
   const response = await res.json();
   return response.data;
+};
+export const SearchByRange = async (priceRange: number) => {
+  const options = {
+    method: "POST",
+    body: JSON.stringify({
+      range: priceRange,
+    }),
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+  const res = await fetch("http://localhost:3000/api/range", options);
+  if (!res.ok) {
+    throw new Error("NO data is fetched");
+  }
+  const arrayofData = await res.json();
+  console.log(arrayofData);
+  return await arrayofData.data;
+};
+export const SearchByCategory = async (searchedCategory: string) => {
+  const options = {
+    method: "POST",
+    body: JSON.stringify({
+      category: searchedCategory,
+    }),
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+  const res = await fetch("http://localhost:3000/api/category", options);
+
+  if (!res.ok) {
+    throw new Error("NO data is fetched");
+  }
+  const arrayofData = await res.json();
+  return await arrayofData.data;
+};
+export const createProperrtyFunction=async (formValues:object) =>{
+  const options = {
+    method: "POST",
+    body: JSON.stringify(
+     formValues
+  ),
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+  const res = await fetch("http://localhost:3000/api/createProperty", options);
+  if (!res.ok) {
+    throw new Error("Error while creating the property. Please try Again");
+  }
+  const arrayofData = await res.json();
+  return await arrayofData.data;
 }

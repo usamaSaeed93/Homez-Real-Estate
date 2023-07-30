@@ -12,7 +12,6 @@ class CustomError extends Error {
 }
 export async function POST(request: Request, response: Response) {
   const { email, password } = await request.json();
-
   try {
     const user = await User.findOne({ email });
     if (!user) {
@@ -45,16 +44,14 @@ export async function POST(request: Request, response: Response) {
 
     const tokenKey = "realestate";
     const token = await jwt.sign(tokenData, tokenKey, { expiresIn: "2min" });
-    // const decodedToken = jwt.verify(token, tokenKey);
+
     const response = NextResponse.json({
       message: "OK",
       status: 200,
-      data:{
-        message:"User has logged in successfully",
-        token
-      }
+      data: {
+        login:true
+      },
     });
-
     response.cookies.set("token", token, {
       httpOnly: true,
       path: "/",

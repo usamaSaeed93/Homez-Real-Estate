@@ -167,8 +167,8 @@ const Search: React.FC = () => {
                   <input
                     type="range"
                     className="w-1/2 m-auto"
-                    min={0}
-                    max={100}
+                    min={1000}
+                    max={10000}
                     value={change}
                     onChange={handleChange}
                   />

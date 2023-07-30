@@ -10,8 +10,9 @@ class CustomError extends Error {
   }
 }
 export async function POST(request: Request, response: Response) {
-  const { location, category, sort, range } = await request.json();
-    const user = await Properties.find({ country: location });
+  const { range } = await request.json();
+  const rangeNumber = Number(range); // Convert range to a number
+  const user = await Properties.find({ price: { $lt: rangeNumber } });
   try {
     return NextResponse.json({
       message: "OK",

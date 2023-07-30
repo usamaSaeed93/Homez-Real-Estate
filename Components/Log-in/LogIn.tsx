@@ -3,11 +3,15 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { LogInFunction } from "@/utils/requests";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { isLogin } from "@/app/redux/features/slice";
 interface SignInForm {
   email: string;
   password: string;
 }
 const SignIn: React.FC = () => {
+  const [status,setStatus]=useState<boolean>(false);
+  const router=useRouter();
   const {
     control,
     handleSubmit,
@@ -23,7 +27,7 @@ const SignIn: React.FC = () => {
     console.log(res);
   };
   const onSubmit = (data: SignInForm) => {
-   fetchData(data);
+    fetchData(data);
   };
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
