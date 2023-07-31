@@ -14,8 +14,17 @@ interface AddTabInterface {
   div: PropertyInterface;
 }
 const AddTab: React.FC<AddTabInterface> = ({ div }) => {
-
-  const { name, location, country, specifications, option, liked, id,price ,category} = div;
+  const {
+    name,
+    location,
+    country,
+    specifications,
+    option,
+    liked,
+    id,
+    price,
+    category,
+  } = div;
   return (
     <div className="max-w-[300px] sm:max-w-[400px] min-h-fit  flex flex-col justify-start items-start px-4">
       <Link href={`/properties/${id}`}>
@@ -28,13 +37,12 @@ const AddTab: React.FC<AddTabInterface> = ({ div }) => {
         {location}
       </p>
       <div className="flex flex-row justify-between gap-6">
-
-      <p className="text-center text-black font-normal text-base font-Manrope pb-2">
-        {price}$
-      </p>
-      <p className="text-center text-black font-normal text-base font-Manrope pb-2">
-       category:{category}
-      </p>
+        <p className="text-center text-black font-normal text-base font-Manrope pb-2">
+          {price}$
+        </p>
+        <p className="text-center text-black font-normal text-base font-Manrope pb-2">
+          category:{category}
+        </p>
       </div>
       <div className="flex flex-row justify-start items-center  gap-x-5 border-b border-solid border-black border-opacity-25  w-[95%] pb-3">
         <div className="flex flex-row gap-1 justify-center items-center text-gray-500 text-sm">
