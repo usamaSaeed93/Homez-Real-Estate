@@ -11,17 +11,12 @@ interface CarouselProps {
 }
 
 const Carousel:React.FC<CarouselProps > = ({data}) => {
- 
+ console.log(data)
   if (typeof window !== "undefined") {
     (window as any).$ = (window as any).jQuery = require("jquery");
   }
 
-  // const divs = [
-  //   <div className="item"><AddTab /></div>,
-  //   <div className="item"><AddTab /></div>,
-  //   <div className="item"><AddTab /></div>,
   
-  // ];
 
   const owlOptions = {
     items: 3, // Number of items to show at a time
@@ -38,9 +33,9 @@ const Carousel:React.FC<CarouselProps > = ({data}) => {
     <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
       <OwlCarousel className="owl-theme" {...owlOptions}>
         {data.map((div:PropertyInterface, index:number) => (
-          data ? <Carousel data={data} /> : <div>Loading...</div>
+          data ? <AddTab div={div} /> : <div>Loading...</div>
         ))}
-      </OwlCarousel>
+       </OwlCarousel> 
     </div>
   );
 };

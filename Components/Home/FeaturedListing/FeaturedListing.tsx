@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import Carousel from "./Carousel";
 import AddTab from "./AddTab";
@@ -39,7 +39,9 @@ const FeaturedListing: React.FC = () => {
           </button>
         </Link>
       </div>
+ 
       {data ? <Carousel data={data} /> : <div>Loading...</div>}
+
     </div>
   );
 };
