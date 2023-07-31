@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import Properties from "../../../models/property";
+import User from "@/models/users";
 import dbConnect from "@/lib/mongodb";
-
 dbConnect();
 class CustomError extends Error {
   constructor(message: string) {
@@ -10,13 +9,14 @@ class CustomError extends Error {
   }
 }
 export async function POST(request: Request, response: Response) {
-const {id}=await request.json();
- const user = await Properties.findOne({id});
+  const { createdBy } = await request.json();
+  console.log(createdBy);
+  const user = await User.find({ email: createdBy });
   try {
     return NextResponse.json({
       message: "OK",
       status: 200,
-      data:user
+      data: user,
     });
   } catch (err: any) {
     if (err instanceof CustomError) {

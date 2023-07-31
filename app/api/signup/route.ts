@@ -10,7 +10,7 @@ class CustomError extends Error {
   }
 }
 export async function POST(request: Request, response: Response) {
-  const { firstName, lastName, email, password } = await request.json();
+  const { firstName, lastName, email, password,address,contactNo } = await request.json();
   try {
   const user = await User.findOne({ email });
     if (user) {
@@ -29,7 +29,9 @@ export async function POST(request: Request, response: Response) {
         firstName,
         lastName,
         email,
-        password:hashPassword
+        password:hashPassword,
+        address,
+        contactNo
       })
 console.log(createdUser);
     return NextResponse.json({

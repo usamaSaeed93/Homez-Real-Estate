@@ -3,22 +3,29 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SignUpFunction } from "@/utils/requests";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Alert from "@mui/material/Alert";
 type FormValues = {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
+  contactNo: string;
+  address: string;
 };
 const SignUpPage: React.FC = () => {
+  const router = useRouter();
 
   const [formData, setFormData] = useState<FormValues>({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
+    contactNo: "",
+    address: "",
   });
-  const [created, setcreated] = useState(false);
+  const [created, setcreated] = useState<String>("Please Sign In");
   const {
     handleSubmit,
     register,
@@ -26,7 +33,14 @@ const SignUpPage: React.FC = () => {
   } = useForm<FormValues>();
   const fetchData = async (data: object) => {
     const res = await SignUpFunction(data);
-  setcreated(res);
+    if (res) {
+      setcreated("Account created Sucessfull. Redirecting to Log In");
+      setTimeout(() => {
+        router.push("/log-in");
+      }, 3000);
+    } else {
+      setcreated("Account with this Email is already present! Sign In Instead");
+    }
   };
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     fetchData(data);
@@ -41,13 +55,8 @@ const SignUpPage: React.FC = () => {
           </h2>
         </div>
 
-        {!created ? (
-          <Alert severity="error">
-            Account with this Email is already present! Try Another.
-          </Alert>
-        ) : (
-          <Alert severity="success">Account has created Successfully</Alert>
-        )}
+        <Alert severity="info">{created}</Alert>
+
         <form className="mt-8 space-y-6 " onSubmit={handleSubmit(onSubmit)}>
           <div className="rounded-md shadow-sm -space-y-px ">
             <div>
@@ -122,6 +131,42 @@ const SignUpPage: React.FC = () => {
               )}
             </div>
             <div>
+              <label htmlFor="firstName" className="sr-only">
+              Contact No
+              </label>
+              <input
+                {...register("contactNo", {
+                  required: "First Name is required",
+                })}
+                type="text"
+                name="contactNo"
+                id="contactNo"
+                autoComplete="given-name"
+                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                  errors.contactNo ? "border-red-500" : "border-gray-300"
+                } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
+                placeholder="Contact No"
+              />
+              </div>
+              <div>
+              <label htmlFor="firstName" className="sr-only">
+               Address
+              </label>
+              <input
+                {...register("address", {
+                  required: "Address is required",
+                })}
+                type="text"
+                name="address"
+                id="address"
+                autoComplete="given-name"
+                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                  errors.address ? "border-red-500" : "border-gray-300"
+                } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
+                placeholder="Address"
+              />
+                 </div>
+            <div>
               <label htmlFor="password" className="sr-only">
                 Password
               </label>
@@ -159,6 +204,12 @@ const SignUpPage: React.FC = () => {
             </button>
           </div>
         </form>
+        <div className="flex flex-row text-black text-xl text-medium justify-center items-center ">
+          <p>ALready have an Account ? </p>
+          <Link href="/log-in">
+            <p className="text-blue-700">Log In</p>
+          </Link>
+        </div>
       </div>
     </div>
   );

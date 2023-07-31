@@ -77,8 +77,7 @@ const [created,setcreated]=useState(false);
 
       <h2 className="text-2xl font-bold text-center mb-6">Create Property</h2>
       {
-        created?<Alert severity="success">This is a success alert — check it out!</Alert> : ""
-
+        created?<Alert severity="success">Property Created. Congratulations !</Alert> : ""
       }
       <div className="mb-4">
         <label htmlFor="name" className="block text-gray-700 font-medium">
@@ -96,19 +95,6 @@ const [created,setcreated]=useState(false);
         <label htmlFor="category" className="block text-gray-700 font-medium">
           ID
         </label>
-        <button
-          id="id"
-          className="mt-1 p-2 border border-gray-300 rounded w-full focus:ring-2 focus:ring-blue-500"
-          value={formData.id}
-          onClick={() =>
-            setFormData({
-              ...formData,
-              id: Math.floor(Math.random() * 10000).toString(),
-            })
-          }
-        >
-          Generate ID
-        </button>
       </div>
       <div className="mb-4">
         <label htmlFor="location" className="block text-gray-700 font-medium">

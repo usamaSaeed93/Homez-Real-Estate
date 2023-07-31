@@ -33,7 +33,7 @@ const Carousel:React.FC<CarouselProps > = ({data}) => {
     <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
       <OwlCarousel className="owl-theme" {...owlOptions}>
         {data.map((div:PropertyInterface, index:number) => (
-          data ? <AddTab div={div} /> : <div>Loading...</div>
+          data ? <AddTab div={div} key={index} /> : <div>Loading...</div>
         ))}
        </OwlCarousel> 
     </div>

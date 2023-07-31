@@ -6,14 +6,19 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { isLogin } from "@/app/redux/features/slice";
 import Alert from "@mui/material/Alert";
+import Link from "next/link";
 interface SignInForm {
   email: string;
   password: string;
 }
 const SignIn: React.FC = () => {
-  const [created, setcreated] = useState(false);
+  const router = useRouter();
+  const [created, setcreated] = useState<string>("Welcome Back. Please Log In");
   const [status, setStatus] = useState<boolean>(false);
-  // const router=useRouter();
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  if (token) {
+    router.push("/");
+  }
   const {
     control,
     handleSubmit,
@@ -26,8 +31,16 @@ const SignIn: React.FC = () => {
   });
   const fetchData = async (data: object) => {
     const res = await LogInFunction(data);
-    console.log(res)
-    setcreated(res);
+    if (res) {
+      setcreated("Loged In. Redirecting towards Home.")
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
+    }
+    else{
+      setcreated("Email or Password is not correct. Try Again.")
+    }
+  
   };
   const onSubmit = (data: SignInForm) => {
     fetchData(data);
@@ -35,8 +48,9 @@ const SignIn: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="p-6 mx-auto bg-white rounded-md shadow-md w-96">
-        {/* <h2 className="mb-6 text-2xl font-bold text-center">Sign In</h2>{
-        !created?<Alert severity="error">Username or Password is not correct. Try Again</Alert> : <Alert severity="success">User has Loged in Successfully</Alert>} */}
+      <Alert severity="info">
+            {created}
+          </Alert>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="email" className="block mb-1 font-semibold">
@@ -105,6 +119,12 @@ const SignIn: React.FC = () => {
             </button>
           </div>
         </form>
+        <div className="flex flex-row text-black text-xl text-medium justify-center items-center ">
+<p>New to homez ? </p>
+        <Link href='/sign-up'>
+       <p className="text-blue-700">Sign Up</p>
+        </Link>
+        </div>
       </div>
     </div>
   );

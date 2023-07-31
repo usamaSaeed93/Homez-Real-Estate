@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 export const getAllProperties = async () => {
   const res = await fetch("http://localhost:3000/api/properties");
   if (!res.ok) {
@@ -39,9 +40,9 @@ export const SearchByID = async (pid: string) => {
     throw new Error("NO data is fetched");
   }
   const arrayofData = await res.json();
+  console.log(arrayofData);
   return await arrayofData.data;
 };
-
 export const SignUpFunction = async (params: object) => {
   const options = {
     method: "POST",
@@ -124,6 +125,23 @@ export const createProperrtyFunction = async (formValues: object) => {
   const res = await fetch("http://localhost:3000/api/createProperty", options);
   if (!res.ok) {
     throw new Error("Error while creating the property. Please try Again");
+  }
+  const arrayofData = await res.json();
+  return await arrayofData.data;
+};
+export const SearchUser = async (email: string) => {
+  const options = {
+    method: "POST",
+    body: JSON.stringify({
+      createdBy: email,
+    }),
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+  const res = await fetch("http://localhost:3000/api/searchUser", options);
+  if (!res.ok) {
+    throw new Error("NO data is fetched");
   }
   const arrayofData = await res.json();
   return await arrayofData.data;

@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
     },
     liked:Boolean,
     category:String,
-    price:Number
+    price:Number,
+    createdBy:String
   },
 });
 
