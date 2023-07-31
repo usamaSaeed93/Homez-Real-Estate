@@ -45,17 +45,19 @@ export const SearchByID = async (pid: string) => {
 export const SignUpFunction = async (params: object) => {
   const options = {
     method: "POST",
-    body: JSON.stringify(params), 
+    body: JSON.stringify(params),
     headers: {
       "content-type": "application/json",
     },
   };
   const res = await fetch("http://localhost:3000/api/signup", options);
   if (!res.ok) {
-    throw new Error("No data is fetched");
+    if (!res.ok) {
+      return "no";
+    }
   }
   const response = await res.json();
-  return response.data; 
+  return response.data;
 };
 
 export const LogInFunction = async (params: object) => {
@@ -68,9 +70,11 @@ export const LogInFunction = async (params: object) => {
   };
   const res = await fetch("http://localhost:3000/api/login", options);
   if (!res.ok) {
-    throw new Error("No data is fetched");
+    return "no";
   }
   const response = await res.json();
+  console.log(response);
+  localStorage.setItem("token", response.token);
   return response.data;
 };
 export const SearchByRange = async (priceRange: number) => {
@@ -88,7 +92,7 @@ export const SearchByRange = async (priceRange: number) => {
     throw new Error("NO data is fetched");
   }
   const arrayofData = await res.json();
-  console.log(arrayofData);
+
   return await arrayofData.data;
 };
 export const SearchByCategory = async (searchedCategory: string) => {
@@ -109,12 +113,10 @@ export const SearchByCategory = async (searchedCategory: string) => {
   const arrayofData = await res.json();
   return await arrayofData.data;
 };
-export const createProperrtyFunction=async (formValues:object) =>{
+export const createProperrtyFunction = async (formValues: object) => {
   const options = {
     method: "POST",
-    body: JSON.stringify(
-     formValues
-  ),
+    body: JSON.stringify(formValues),
     headers: {
       "content-type": "application/json",
     },
@@ -125,4 +127,4 @@ export const createProperrtyFunction=async (formValues:object) =>{
   }
   const arrayofData = await res.json();
   return await arrayofData.data;
-}
+};

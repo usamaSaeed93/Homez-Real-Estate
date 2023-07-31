@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Properties from "../../../models/property";
 import dbConnect from "@/lib/mongodb";
-
+import authMiddleware from "@/utils/authMiddleware";
 dbConnect();
 class CustomError extends Error {
   constructor(message: string) {

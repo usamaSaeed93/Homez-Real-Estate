@@ -35,7 +35,6 @@ export async function POST(request: Request, response: Response) {
         }
       );
     }
-    // createtoken data
     const tokenData = {
       id: user._id,
       name: user.firstName,
@@ -43,19 +42,15 @@ export async function POST(request: Request, response: Response) {
     };
 
     const tokenKey = "realestate";
-    const token = await jwt.sign(tokenData, tokenKey, { expiresIn: "2min" });
+    const token = await jwt.sign(tokenData, tokenKey, { expiresIn: "1h" });
 
     const response = NextResponse.json({
       message: "OK",
       status: 200,
-      data: {
-        login:true
-      },
+      data: true,
+      token
     });
-    response.cookies.set("token", token, {
-      httpOnly: true,
-      path: "/",
-    });
+
     return response;
   } catch (err: any) {
     if (err instanceof CustomError) {

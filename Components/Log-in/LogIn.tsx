@@ -5,13 +5,15 @@ import { LogInFunction } from "@/utils/requests";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { isLogin } from "@/app/redux/features/slice";
+import Alert from "@mui/material/Alert";
 interface SignInForm {
   email: string;
   password: string;
 }
 const SignIn: React.FC = () => {
-  const [status,setStatus]=useState<boolean>(false);
-  const router=useRouter();
+  const [created, setcreated] = useState(false);
+  const [status, setStatus] = useState<boolean>(false);
+  // const router=useRouter();
   const {
     control,
     handleSubmit,
@@ -24,7 +26,8 @@ const SignIn: React.FC = () => {
   });
   const fetchData = async (data: object) => {
     const res = await LogInFunction(data);
-    console.log(res);
+    console.log(res)
+    setcreated(res);
   };
   const onSubmit = (data: SignInForm) => {
     fetchData(data);
@@ -32,7 +35,8 @@ const SignIn: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="p-6 mx-auto bg-white rounded-md shadow-md w-96">
-        <h2 className="mb-6 text-2xl font-bold text-center">Sign In</h2>
+        {/* <h2 className="mb-6 text-2xl font-bold text-center">Sign In</h2>{
+        !created?<Alert severity="error">Username or Password is not correct. Try Again</Alert> : <Alert severity="success">User has Loged in Successfully</Alert>} */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="email" className="block mb-1 font-semibold">

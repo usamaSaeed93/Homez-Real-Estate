@@ -11,10 +11,6 @@ class CustomError extends Error {
 }
 export async function POST(request: Request, response: Response) {
   const { firstName, lastName, email, password } = await request.json();
-  console.log(firstName);
-  console.log(lastName);
-  console.log(email);
-  console.log(password);
   try {
   const user = await User.findOne({ email });
     if (user) {
@@ -39,7 +35,7 @@ console.log(createdUser);
     return NextResponse.json({
       message: "OK",
       status: 200,
-      data:createdUser
+      data:true
     });
   } catch (err: any) {
     if (err instanceof CustomError) {

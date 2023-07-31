@@ -1,14 +1,27 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import Carousel from "./Carousel";
 import AddTab from "./AddTab";
-import {getAllProperties } from '../../../utils/requests'
+import { useEffect } from "react";
+import { getAllProperties } from "../../../utils/requests";
 import { PropertyInterface } from "@/lib";
 import Link from "next/link";
-const  FeaturedListing: React.FC = async () => {
-const data:PropertyInterface[]=await getAllProperties();
+const FeaturedListing: React.FC = () => {
+  const [data, setData] = useState<PropertyInterface[]>();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const properties = await getAllProperties();
+        setData(properties);
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
-
+  // const data:PropertyInterface[]=await getAllProperties();
   return (
     <div className="flex flex-col overflow-hidden ">
       <div className="flex flex-row justify-between items-center max-w-[1000px] m-auto w-full">
@@ -21,12 +34,12 @@ const data:PropertyInterface[]=await getAllProperties();
           </p>
         </div>
         <Link href="/properties">
-        <button className="flex flex-row justify-center items-center w-max h-14 text-black border border-white border-solid p-4 rounded-[20px]">
-          See All Properties <ArrowOutwardIcon />
-        </button>
+          <button className="flex flex-row justify-center items-center w-max h-14 text-black border border-white border-solid p-4 rounded-[20px]">
+            See All Properties <ArrowOutwardIcon />
+          </button>
         </Link>
       </div>
-      <Carousel data={data} />
+      {data ? <Carousel data={data} /> : <div>Loading...</div>}
     </div>
   );
 };

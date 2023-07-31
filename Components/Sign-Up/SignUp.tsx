@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SignUpFunction } from "@/utils/requests";
 import { useState, useEffect } from "react";
+import Alert from "@mui/material/Alert";
 type FormValues = {
   firstName: string;
   lastName: string;
@@ -10,12 +11,14 @@ type FormValues = {
   password: string;
 };
 const SignUpPage: React.FC = () => {
+
   const [formData, setFormData] = useState<FormValues>({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
+  const [created, setcreated] = useState(false);
   const {
     handleSubmit,
     register,
@@ -23,7 +26,7 @@ const SignUpPage: React.FC = () => {
   } = useForm<FormValues>();
   const fetchData = async (data: object) => {
     const res = await SignUpFunction(data);
-    console.log(res);
+  setcreated(res);
   };
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     fetchData(data);
@@ -37,6 +40,14 @@ const SignUpPage: React.FC = () => {
             Sign Up
           </h2>
         </div>
+
+        {!created ? (
+          <Alert severity="error">
+            Account with this Email is already present! Try Another.
+          </Alert>
+        ) : (
+          <Alert severity="success">Account has created Successfully</Alert>
+        )}
         <form className="mt-8 space-y-6 " onSubmit={handleSubmit(onSubmit)}>
           <div className="rounded-md shadow-sm -space-y-px ">
             <div>

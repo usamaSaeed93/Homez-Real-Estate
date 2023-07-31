@@ -6,6 +6,7 @@ import FeaturedListing from './FeaturedListing/FeaturedListing';
 import CountryTab from './Countries/CountryTab';
 import Countries from './Countries/Countries';
 import HelpTab from './Procedure/HelpTab';
+import { Suspense } from 'react';
 import Procedure from './Procedure/Procedure';
 import Profile from './Profile/Profile';
 import Testimonials from './Testimonials/Testimonials';
@@ -18,7 +19,9 @@ import Companies from './Companies/Companies';
  <TopBanner /> 
       </div>
 <div className='lg:mt-96 mt-[600px]'>
+  <Suspense fallback={"loading"} >
  <FeaturedListing />
+  </Suspense>
 </div>
 <div className='flex flex-col justify-center items-center'>
 
