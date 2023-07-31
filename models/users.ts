@@ -7,6 +7,5 @@ email:String,
 password:String
 });
 
-const User = mongoose.models.Properties || mongoose.model("Users", userSchema);
-
+const User = mongoose.models.Users || mongoose.model("Users", userSchema);
 export default User;

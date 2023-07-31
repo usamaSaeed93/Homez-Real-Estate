@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import User from "@/models/users";
 import dbConnect from "@/lib/mongodb";
 import bcryptjs from 'bcryptjs'
-
 dbConnect();
 class CustomError extends Error {
   constructor(message: string) {
@@ -12,11 +11,12 @@ class CustomError extends Error {
 }
 export async function POST(request: Request, response: Response) {
   const { firstName, lastName, email, password } = await request.json();
-
- 
-  //hash Password
+  console.log(firstName);
+  console.log(lastName);
+  console.log(email);
+  console.log(password);
   try {
-    const user = await User.findOne({ email });
+  const user = await User.findOne({ email });
     if (user) {
         return NextResponse.json(
           {
@@ -35,7 +35,7 @@ export async function POST(request: Request, response: Response) {
         email,
         password:hashPassword
       })
-
+console.log(createdUser);
     return NextResponse.json({
       message: "OK",
       status: 200,

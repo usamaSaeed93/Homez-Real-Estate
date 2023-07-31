@@ -21,8 +21,8 @@ if(data){
   return (
     <>
   
-    <div className="flex flex-row  ;m-auto justify-evenly items-start max-w-[1200px] my-5">
-      <div className="w-1/2 mt-auto">
+    <div className="flex flex-col md:flex-row m-auto justify-evenly items-start md:justify-center md:items-center max-w-[1200px] my-5">
+      <div className="w-1/2 mt-auto m-auto">
         <p>Property Description</p>
         <div>
           <Carousel />
@@ -53,7 +53,7 @@ if(data){
         </div>
       </div>
       </div>
-      <div className="w-max flex flex-col justify-center items-start gap-y-5 bg-gray-100 h-max mt-auto py-5 rounded-lg px-5 ">
+      <div className="w-max flex flex-col justify-center items-start gap-y-5 bg-gray-100 h-max py-5 rounded-lg px-5 m-auto">
         <div className="flex flex-row justify-between items-start max-w-[350px] gap-x-10">
           <div className="max-w-[150px] h-[50px] border-[#222328] border-solid border rounded-xl flex flex-row justify-between items-center p-3 gap-2">
             <SendIcon />

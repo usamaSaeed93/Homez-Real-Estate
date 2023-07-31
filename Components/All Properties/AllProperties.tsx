@@ -11,7 +11,7 @@ const AllProperties:React.FC=()=> {
   const location = useSelector((state: RootState) => state.specs.country);
   return (
     <div>
-    <div className='flex flex-col pt-10 h-max'>
+    <div className='flex flex-col  h-max'>
         <TopBanner />
     </div>
     <div>

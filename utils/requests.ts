@@ -45,7 +45,7 @@ export const SearchByID = async (pid: string) => {
 export const SignUpFunction = async (params: object) => {
   const options = {
     method: "POST",
-    body: JSON.stringify(params), // Pass the params directly without wrapping in another object
+    body: JSON.stringify(params), 
     headers: {
       "content-type": "application/json",
     },
@@ -55,7 +55,7 @@ export const SignUpFunction = async (params: object) => {
     throw new Error("No data is fetched");
   }
   const response = await res.json();
-  return response.data; // No need to use 'await' here, as 'response.data' is not a promise
+  return response.data; 
 };
 
 export const LogInFunction = async (params: object) => {

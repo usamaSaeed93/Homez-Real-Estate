@@ -8,7 +8,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { Drawer } from "@mui/material";
 const Navbar: React.FC = () => {
   return (
-    <div className="flex flex-row bg-darkBlue justify-between items-center px-4 h-20 max-w-[1400px] m-auto">
+    <div className="flex max-w-[1400px] flex-row bg-darkBlue justify-between items-center  h-20  w-full m-auto">
       <Link href="/">
         <p className="font-bold font-Manrope text-xl text-white pr-4 flex lg:hidden cursor-pointer">
           Homez
