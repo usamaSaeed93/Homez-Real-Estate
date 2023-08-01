@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
     price:Number,
     createdBy:String
   },
+  
 });
 
 const Properties = mongoose.models.Properties || mongoose.model("Properties", userSchema);

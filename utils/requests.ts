@@ -40,7 +40,6 @@ export const SearchByID = async (pid: string) => {
     throw new Error("NO data is fetched");
   }
   const arrayofData = await res.json();
-  console.log(arrayofData);
   return await arrayofData.data;
 };
 export const SignUpFunction = async (params: object) => {
@@ -71,10 +70,9 @@ export const LogInFunction = async (params: object) => {
   };
   const res = await fetch("http://localhost:3000/api/login", options);
   if (!res.ok) {
-    return "no";
+    return false;
   }
   const response = await res.json();
-  console.log(response);
   localStorage.setItem("token", response.token);
   return response.data;
 };
@@ -144,5 +142,6 @@ export const SearchUser = async (email: string) => {
     throw new Error("NO data is fetched");
   }
   const arrayofData = await res.json();
+  console.log(arrayofData + "Array of Data");
   return await arrayofData.data;
 };

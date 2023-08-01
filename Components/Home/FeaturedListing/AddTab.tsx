@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import room from "../../../public/Images/png/Rosedwood_Hunter_Angle3-1024x503.jpg";
 import SingleBedIcon from "@mui/icons-material/SingleBed";
@@ -9,11 +10,15 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { PropertyInterface } from "@/lib";
+import { useDispatch } from "react-redux";
+import { creatorInfo } from "@/app/redux/features/slice";
 import Link from "next/link";
 interface AddTabInterface {
   div: PropertyInterface;
 }
 const AddTab: React.FC<AddTabInterface> = ({ div }) => {
+  const dispatch=useDispatch();
+
   const {
     name,
     location,
@@ -24,9 +29,10 @@ const AddTab: React.FC<AddTabInterface> = ({ div }) => {
     id,
     price,
     category,
+    createdBy
   } = div;
   return (
-    <div className="max-w-[300px] sm:max-w-[400px] min-h-fit  flex flex-col justify-start items-start px-4">
+    <div className="max-w-[300px] sm:max-w-[400px] min-h-fit  flex flex-col justify-start items-start px-4" onClick={()=>dispatch(creatorInfo(createdBy))}>
       <Link href={`/properties/${id}`}>
         <Image src={room} alt="room" className=" w-full rounded-lg" />
       </Link>

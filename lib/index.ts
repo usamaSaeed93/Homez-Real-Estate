@@ -10,7 +10,7 @@
     images?:{
       thumbnail?:string; 
       banner?:string;
-      banner2?:string
+      banner2?:string;
     },
   liked:boolean,
     specifications: {
@@ -19,6 +19,6 @@
       area: number;
       condition: boolean;
     };
-  
+  createdBy:string;
 }
 

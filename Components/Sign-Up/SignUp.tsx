@@ -14,6 +14,10 @@ type FormValues = {
   contactNo: string;
   address: string;
 };
+interface SetCreatedInterface {
+  message: string;
+  type: string;
+}
 const SignUpPage: React.FC = () => {
   const router = useRouter();
 
@@ -25,7 +29,10 @@ const SignUpPage: React.FC = () => {
     contactNo: "",
     address: "",
   });
-  const [created, setcreated] = useState<String>("Please Sign In");
+  const [created, setcreated] = useState<SetCreatedInterface>({
+    message: "Welcome Back. Please Log In",
+    type: "info",
+  });
   const {
     handleSubmit,
     register,
@@ -34,12 +41,21 @@ const SignUpPage: React.FC = () => {
   const fetchData = async (data: object) => {
     const res = await SignUpFunction(data);
     if (res) {
-      setcreated("Account created Sucessfull. Redirecting to Log In");
+      setcreated((prevState) => ({
+        ...prevState,
+        message: "Account created Sucessfull. Redirecting to Log In",
+        type: "success",
+      }));
       setTimeout(() => {
-        router.push("/log-in");
-      }, 3000);
+        router.back();
+     }, 3000);
     } else {
-      setcreated("Account with this Email is already present! Sign In Instead");
+ 
+      setcreated((prevState) => ({
+        ...prevState,
+        message: "Account with this Email is already present! Sign In Instead",
+        type: "success",
+      }));
     }
   };
   const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -55,7 +71,7 @@ const SignUpPage: React.FC = () => {
           </h2>
         </div>
 
-        <Alert severity="info">{created}</Alert>
+        <Alert severity={`${created.type}`}>{created.message}</Alert>
 
         <form className="mt-8 space-y-6 " onSubmit={handleSubmit(onSubmit)}>
           <div className="rounded-md shadow-sm -space-y-px ">
@@ -71,7 +87,7 @@ const SignUpPage: React.FC = () => {
                 name="firstName"
                 id="firstName"
                 autoComplete="given-name"
-                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                className={`apperrance-none  mb-3 rounded-none relative block w-full px-3 py-2 border ${
                   errors.firstName ? "border-red-500" : "border-gray-300"
                 } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
                 placeholder="First Name"
@@ -92,7 +108,7 @@ const SignUpPage: React.FC = () => {
                 name="lastName"
                 id="lastName"
                 autoComplete="family-name"
-                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                className={`apperrance-none  mb-3 rounded-none relative block w-full px-3 py-2 border ${
                   errors.lastName ? "border-red-500" : "border-gray-300"
                 } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
                 placeholder="Last Name"
@@ -119,7 +135,7 @@ const SignUpPage: React.FC = () => {
                 name="email"
                 id="email"
                 autoComplete="email"
-                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                className={`apperrance-none  mb-3 rounded-none relative block w-full px-3 py-2 border ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
                 placeholder="Email address"
@@ -142,7 +158,7 @@ const SignUpPage: React.FC = () => {
                 name="contactNo"
                 id="contactNo"
                 autoComplete="given-name"
-                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                className={`apperrance-none  mb-3 rounded-none relative block w-full px-3 py-2 border ${
                   errors.contactNo ? "border-red-500" : "border-gray-300"
                 } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
                 placeholder="Contact No"
@@ -160,7 +176,7 @@ const SignUpPage: React.FC = () => {
                 name="address"
                 id="address"
                 autoComplete="given-name"
-                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                className={`apperrance-none  mb-3 rounded-none relative block w-full px-3 py-2 border ${
                   errors.address ? "border-red-500" : "border-gray-300"
                 } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
                 placeholder="Address"
@@ -182,7 +198,7 @@ const SignUpPage: React.FC = () => {
                 name="password"
                 id="password"
                 autoComplete="current-password"
-                className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
+                className={`apperrance-none  mb-3 rounded-none relative block w-full px-3 py-2 border ${
                   errors.password ? "border-red-500" : "border-gray-300"
                 } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
                 placeholder="Password"

@@ -11,7 +11,10 @@ interface CarouselProps {
 }
 
 const Carousel:React.FC<CarouselProps > = ({data}) => {
- console.log(data)
+  var $ = require("jquery");
+if (typeof window !== 'undefined') {
+   window.$ = window.jQuery = require('jquery');
+}
   if (typeof window !== "undefined") {
     (window as any).$ = (window as any).jQuery = require("jquery");
   }

@@ -99,36 +99,6 @@ const Search: React.FC = () => {
         />
       </div>
       <div className="flex flex-row justify-center items-center">
-        {/* <div className={`flex flex-col ${open ? "pt-20" : "pt-0"} `}>
-          <div
-            className=" items-start border-l border-r border-solid border-black border-opacity-25 flex flex-row justify-between gap-x-10 px-5 transition-all cursor-pointer "
-            onClick={() => setOpen((open) => !open)}
-          >
-            <p className="text-gray-700 font-Inter text-base font-semibold leading-normal cursor-pointer">
-              {location}
-            </p>
-            <ArrowDropDownIcon />
-          </div>
-          <div
-            className={`w-auto ${
-              open ? "flex" : " hidden"
-            } h-20 overflow-y-auto flex  flex-col justify-center items-center pt-3 bg-white rounded-lg shadow-lg } `}
-          >
-            {locations?.map((location,index) => {
-              return (
-                <p key={index}
-                  className="text-bold font-Manrope text-lg py-3 cursor-pointer "
-                  onClick={() => {
-                    handleOpen(location);
-                    dispatch(changeCountry(location));
-                  }}
-                >
-                  {location}
-                </p>
-              );
-            })}
-          </div>
-        </div> */}
         <Box sx={{ minWidth: 120 }} className="border-none">
           <FormControl fullWidth className="border-none hover:border-none">
             <Select
@@ -186,28 +156,6 @@ const Search: React.FC = () => {
                         onChange={handleChange3}
                       >
                         {category?.map((item, index) => {
-                          return (
-                            <MenuItem key={index} value={item}>
-                              {item}
-                            </MenuItem>
-                          );
-                        })}
-                      </Select>
-                    </FormControl>
-                  </Box>
-                  <Box sx={{ minWidth: 120, marginTop: "30px" }}>
-                    <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label">
-                        Sort By
-                      </InputLabel>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={sort}
-                        label="Sort"
-                        onChange={handleChange2}
-                      >
-                        {sortingOptions?.map((item, index) => {
                           return (
                             <MenuItem key={index} value={item}>
                               {item}

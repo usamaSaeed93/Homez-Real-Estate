@@ -5,7 +5,8 @@ const initialState = {
   range: 3000,
   category: "Villa",
   sortBy: "default",
-  loginStatus:false
+  loginStatus:false,
+  createdBy:""
 };
 export const PropertySlice = createSlice({
   name: "Property",
@@ -25,8 +26,11 @@ export const PropertySlice = createSlice({
     },
     isLogin(state,action:PayloadAction<boolean>){
       state.loginStatus = action.payload;
+    },
+   creatorInfo(state,action:PayloadAction<string>){
+      state.createdBy = action.payload;
     }
   },
 });
-export const {changeCategory,changeCountry,changeRange,sortingOption,isLogin} = PropertySlice.actions;
+export const {changeCategory,changeCountry,changeRange,sortingOption,isLogin,creatorInfo} = PropertySlice.actions;
 export default PropertySlice.reducer;

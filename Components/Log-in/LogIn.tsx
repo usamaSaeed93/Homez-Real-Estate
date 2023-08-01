@@ -7,13 +7,21 @@ import { useRouter } from "next/navigation";
 import { isLogin } from "@/app/redux/features/slice";
 import Alert from "@mui/material/Alert";
 import Link from "next/link";
+import { info } from "console";
 interface SignInForm {
   email: string;
   password: string;
 }
+interface SetCreatedInterface {
+  message: string;
+  type: string;
+}
 const SignIn: React.FC = () => {
   const router = useRouter();
-  const [created, setcreated] = useState<string>("Welcome Back. Please Log In");
+  const [created, setcreated] = useState<SetCreatedInterface>({
+    message: "Welcome Back. Please Log In",
+    type: "info",
+  });
   const [status, setStatus] = useState<boolean>(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   if (token) {
@@ -32,15 +40,21 @@ const SignIn: React.FC = () => {
   const fetchData = async (data: object) => {
     const res = await LogInFunction(data);
     if (res) {
-      setcreated("Loged In. Redirecting towards Home.")
+      setcreated((prevState) => ({
+        ...prevState,
+        message: "Logged In. Redirecting towards Home.",
+        type: "success",
+      }));
       setTimeout(() => {
-        router.push("/");
+        router.back();
       }, 3000);
+    } else {
+      setcreated((prevState) => ({
+        ...prevState,
+        message: "Email or Password is not correct. Try Again.",
+        type: "error",
+      }));
     }
-    else{
-      setcreated("Email or Password is not correct. Try Again.")
-    }
-  
   };
   const onSubmit = (data: SignInForm) => {
     fetchData(data);
@@ -48,9 +62,7 @@ const SignIn: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="p-6 mx-auto bg-white rounded-md shadow-md w-96">
-      <Alert severity="info">
-            {created}
-          </Alert>
+        <Alert severity={`${created.type}`}>{created.message}</Alert>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="email" className="block mb-1 font-semibold">
@@ -120,10 +132,10 @@ const SignIn: React.FC = () => {
           </div>
         </form>
         <div className="flex flex-row text-black text-xl text-medium justify-center items-center ">
-<p>New to homez ? </p>
-        <Link href='/sign-up'>
-       <p className="text-blue-700">Sign Up</p>
-        </Link>
+          <p>New to homez ? </p>
+          <Link href="/sign-up">
+            <p className="text-blue-700">Sign Up</p>
+          </Link>
         </div>
       </div>
     </div>

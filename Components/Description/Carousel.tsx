@@ -4,6 +4,10 @@ import './Carousel.css'; // Create a CSS file for styling
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import ArrowLeftAltIcon from '@mui/icons-material/ArrowBack';
 const Carousel = () => {
+  var $ = require("jquery");
+if (typeof window !== 'undefined') {
+   window.$ = window.jQuery = require('jquery');
+}
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
     '/Images/other/main.avif',

@@ -11,9 +11,9 @@ const DivCarousel = () => {
 getAllProperties().then(res=>console.log(res));
   },[])
   var $ = require("jquery");
-  if (typeof window !== "undefined") {
-    (window as any).$ = (window as any).jQuery = require("jquery");
-  }
+if (typeof window !== 'undefined') {
+   window.$ = window.jQuery = require('jquery');
+}
   const divs = [
     <div className="item"><OptionTile /></div>,
     <div className="item"><OptionTile /></div>,
