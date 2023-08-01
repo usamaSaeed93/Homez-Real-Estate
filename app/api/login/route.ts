@@ -48,7 +48,7 @@ export async function POST(request: Request, response: Response) {
       message: "OK",
       status: 200,
       data: true,
-      token
+      token,
     });
 
     return response;
