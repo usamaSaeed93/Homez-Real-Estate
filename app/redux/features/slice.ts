@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
-  country: "Pakistan",
+  country: "Lahore",
   range: 3000,
   category: "Villa",
   sortBy: "default",

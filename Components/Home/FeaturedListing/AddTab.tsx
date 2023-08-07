@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import room from "../../../public/Images/png/Rosedwood_Hunter_Angle3-1024x503.jpg";
 import SingleBedIcon from "@mui/icons-material/SingleBed";
@@ -17,7 +17,7 @@ interface AddTabInterface {
   div: PropertyInterface;
 }
 const AddTab: React.FC<AddTabInterface> = ({ div }) => {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   const {
     name,
@@ -29,10 +29,13 @@ const AddTab: React.FC<AddTabInterface> = ({ div }) => {
     id,
     price,
     category,
-    createdBy
+    createdBy,
   } = div;
   return (
-    <div className="max-w-[300px] sm:max-w-[400px] min-h-fit  flex flex-col justify-start items-start px-4" onClick={()=>dispatch(creatorInfo(createdBy))}>
+    <div
+      className="max-w-[300px] sm:max-w-[400px] min-h-fit  flex flex-col justify-start items-start px-4"
+      onClick={() => dispatch(creatorInfo(createdBy))}
+    >
       <Link href={`/properties/${id}`}>
         <Image src={room} alt="room" className=" w-full rounded-lg" />
       </Link>

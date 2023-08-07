@@ -43,7 +43,7 @@ const SearchedPropertyGrid = () => {
   }, [category]);
 console.log(locationData);
   return (
-    <div className="mt-96 max-w-[1200px] m-auto">
+    <div className=" max-w-[1200px] m-auto">
       <p className="text-3xl py-3 text-black font-bold ">
       {option}
       </p>

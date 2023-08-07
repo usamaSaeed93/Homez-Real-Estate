@@ -28,16 +28,19 @@ interface SearchItems {
 const Search: React.FC = () => {
   const dispatch = useDispatch();
   const locations: string[] = [
-    "Belgium",
-    "Finland",
-    "Pakistan",
-    "India",
-    "Italy",
-    "United States",
-    "Japan",
-    "Canada",
+    "Lahore",
+    "Gujranwala",
+    "Rawalpindi",
+    "Islamabad",
+    "Kasur"
   ];
-  const category: string[] = ["Villa", "Appartment", "Home", "TownHome","FarmHouse"];
+  const category: string[] = [
+    "Villa",
+    "Appartment",
+    "Home",
+    "TownHome",
+    "FarmHouse",
+  ];
   const sortingOptions: string[] = [
     "Sort by Newly Added",
     "Sort by Old",

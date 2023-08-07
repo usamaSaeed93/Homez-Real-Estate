@@ -6,18 +6,18 @@ import SearchedPropertyGrid from './SearchedPropertyGrid'
 import {  useSelector } from "react-redux/es/hooks/useSelector";
 import { RootState } from "@/app/redux/services/store";
 import Loading from '../../Components/Loading'
+import SideBar from './SideBar';
 
 const AllProperties:React.FC=()=> {
   const location = useSelector((state: RootState) => state.specs.country);
   return (
     <div>
-    <div className='flex flex-col  h-max'>
+    <div className='flex flex-col  h-max mb-96'>
         <TopBanner />
     </div>
-    <div>
-       {/* { location === "default"?  <PropertyGrid /> :  */}
+    <div className='flex flex-row'>
+      <SideBar />
         <SearchedPropertyGrid />
-         {/* }  */}
     </div>
     </div>
   )

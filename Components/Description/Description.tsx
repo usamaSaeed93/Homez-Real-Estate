@@ -11,16 +11,19 @@ import { RootState } from "@/app/redux/services/store";
 import { useEffect } from "react";
 import { SearchUser } from "@/utils/requests";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 interface DesINterface {
   data: PropertyInterface;
 }
+
 const Description: React.FC<DesINterface> = ({ data }) => {
-  var { name, specifications, location, description } = data;
+  var { name, specifications, location, description,id } = data;
   const createdBy = useSelector((state: RootState) => state.specs.createdBy);
   const token = localStorage.getItem("token");
   const [show, setShow] = useState<boolean>(false);
-  const [firstName, setFirstName] = useState<string >("user");
-  const [contactNo, setContactNo] = useState<string >("0324462835");
+  const [show2, setShow2] = useState<boolean>(false);
+  const [firstName, setFirstName] = useState<string>("user");
+  const [contactNo, setContactNo] = useState<string>("0324462835");
   const router = useRouter();
   useEffect(() => {
     async function fetchData() {
@@ -33,6 +36,9 @@ const Description: React.FC<DesINterface> = ({ data }) => {
     }
     fetchData();
   }, []);
+  if (token) {
+    () => setShow2(true);
+  }
   const handleClick = async () => {
     if (token) {
       setShow(true);
@@ -43,7 +49,9 @@ const Description: React.FC<DesINterface> = ({ data }) => {
   return (
     <div className="flex flex-col md:flex-row m-auto justify-evenly items-start md:justify-center md:items-center max-w-[1200px] my-5">
       <div className="w-1/2 mt-auto m-auto">
-        <p>Property Description</p>
+        <div className="flex flex-row justify-between">
+          <p>Property Description</p>
+        </div>
         <div>
           <Carousel />
         </div>
@@ -78,6 +86,13 @@ const Description: React.FC<DesINterface> = ({ data }) => {
             <p>{specifications.area} Sqft</p>
           </div>
         </div>
+        <Link href={`/update/${id}`}>
+          <button className="w-full px-4 py-2 text-white bg-indigo-500  hover:bg-indigo-600 rounded-md" >
+            Update Property
+          </button>
+  </Link>
+   
+      
       </div>
       <div className="w-max flex flex-col justify-center items-start gap-y-5 bg-gray-100 h-max py-5 rounded-lg px-5 m-auto">
         <div className="flex flex-row justify-between items-start max-w-[350px] gap-x-10">
